@@ -22,6 +22,19 @@ const App = () => {
     setWinMessage("")
     itemArray.fill("empty", 0, 9)
   }
+  
+  const Tie = () => {
+    let i=0;
+    for(const t of itemArray){
+      if(t !== "empty"){
+        i++;
+      }
+    }
+    if(i===9){
+      setWinMessage("Tie")
+    }
+
+  }
 
   const checkIsWinner = () => {
     if(itemArray[0] === itemArray[1] && itemArray[0] === itemArray[2] && itemArray[0] !== "empty"){
@@ -61,7 +74,7 @@ const App = () => {
     } else {
       return toast("already filled", {type: "error"})
     }
-
+    Tie();
     checkIsWinner();
   }
 
